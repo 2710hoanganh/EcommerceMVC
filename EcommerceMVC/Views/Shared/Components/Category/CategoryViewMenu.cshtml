@@ -1,0 +1,26 @@
+﻿@model IEnumerable<EcommerceMVC.ViewModels.CategoryViewModel>
+<form>
+    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+        <label id="All" onclick="handleCheckboxChange(null)" >All</label>
+    </div>
+    @foreach (var todo in Model)
+    {
+        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+            <label id="@todo.MaLoai" onclick="handleCheckboxChange(@todo.MaLoai)" >@todo.TenLoai</label>
+            <span class="badge border font-weight-normal">@todo.SoLuong</span>
+        </div>
+    }
+    <script>
+        function handleCheckboxChange(category) {
+            var text = document.getElementById(category);
+            if (category != null) {
+                window.location.href = "/HangHoa?category=" + category;
+                text.style.color = "red";
+            }
+            else {
+                window.location.href = "/HangHoa";
+                text = document.getElementById("All").style.color = "red";
+            }
+        }
+    </script>
+</form>
