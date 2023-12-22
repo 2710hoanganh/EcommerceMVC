@@ -60,25 +60,28 @@
                         </div>
                     </form>
                 </div>
-                <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
-                                <i class="fa fa-minus"></i>
-                            </button>
+                <form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Id">
+                    <div class="d-flex align-items-center mb-4 pt-2">
+                        <div class="input-group quantity mr-3" style="width: 130px;">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary btn-minus" type="button">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <input  class="form-control bg-secondary border-0 text-center" name="quantity" value="1">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary btn-plus" type="button">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
                         </div>
-                        <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                        </div>
+                        <button class="btn btn-primary px-3">
+                            <i class="fa fa-shopping-cart mr-1"></i> Add To
+                            Cart
+                        </button>
                     </div>
-                    <button class="btn btn-primary px-3">
-                        <i class="fa fa-shopping-cart mr-1"></i> Add To
-                        Cart
-                    </button>
-                </div>
+                </form>
+              
                 <div class="d-flex pt-2">
                     <strong class="text-dark mr-2">Share on:</strong>
                     <div class="d-inline-flex">
