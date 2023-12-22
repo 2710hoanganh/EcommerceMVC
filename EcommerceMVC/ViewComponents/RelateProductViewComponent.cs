@@ -13,7 +13,7 @@ namespace EcommerceMVC.ViewComponents
         public IViewComponentResult Invoke(int productId)
         {
             var product = _context.HangHoas.SingleOrDefault(p => p.MaHh == productId);
-            var relateProduct = _context.HangHoas.Where(p => p.MaLoai == product.MaLoai);
+            var relateProduct = _context.HangHoas.Where(p => p.MaLoai == product.MaLoai && p.MaHh != productId);
             var relate = relateProduct.Select(r => new RelateProductViewModel
             {
                 Id = r.MaHh,
