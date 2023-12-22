@@ -30,17 +30,17 @@
         <div class="container-fluid">
             <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
                 <div class="col-lg-4">
-                    <a href="" class="text-decoration-none">
+                    <a asp-action="Index" asp-controller="Home" class="text-decoration-none">
                         <span class="h1 text-uppercase text-primary bg-dark px-2">MCV</span>
                         <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Project</span>
                     </a>
                 </div>
                 <div class="col-lg-4 col-6 text-left">
-                    <form action="">
+                    <form asp-action="Search" asp-controller="HangHoa">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for products">
+                            <input id="key" type="text" class="form-control" placeholder="Search for products" name="key">
                             <div class="input-group-append">
-                                <span class="input-group-text bg-transparent text-primary">
+                                <span id="searchIcon" class="input-group-text bg-transparent text-primary">
                                     <i class="fa fa-search"></i>
                                 </span>
                             </div>
@@ -71,7 +71,6 @@
                             <div class="navbar-nav mr-auto py-0">
                                 <a href="/" class="nav-item nav-link active">Home</a>
                                 <a href="/HangHoa" class="nav-item nav-link">Shop</a>
-                                <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                     <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
@@ -100,6 +99,38 @@
             @RenderBody()
 
             @await Html.PartialAsync("_Footer")
+
+                    <!-- Back to Top -->
+        <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="~/lib/easing/easing.min.js"></script>
+        <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="~/mail/jqBootstrapValidation.min.js"></script>
+        <script src="~/mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="~/js/main.js"></script>
+        @RenderSection("Scripts", required:false);
+        <script>
+            $(document).ready(function () {
+                $("#searchIcon").click(function (){
+                    let url = `/HangHoa/Search?key=` + $("#key").val();
+                    window.location.href = url;
+                })
+            })
+            $(document).ready(function () {
+                $("#key").change(function () {
+                    let url = `/HangHoa/Search?key=` + $("#key").val();
+                    window.location.href = url;
+                })
+            })
+        </script>
         </div>
     </body>
 </html>

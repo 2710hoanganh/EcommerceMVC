@@ -1,8 +1,7 @@
 ﻿@model IEnumerable<EcommerceMVC.ViewModels.ProductViewModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Search";
 }
-
 <!-- Breadcrumb Start -->
 <div class="container-fluid">
     <div class="row px-xl-5">
@@ -183,7 +182,7 @@
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <a asp-action="Detail" asp-controller="HangHoa" asp-route-productID="@item.Id" class="h6 text-decoration-none text-truncate">@item.Name</a>
+                                <a class="h6 text-decoration-none text-truncate" href="">@item.Name</a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5>$@item.Price</h5><h6 class="text-muted ml-2"></h6>
                                 </div>
