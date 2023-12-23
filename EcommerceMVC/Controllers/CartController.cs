@@ -2,7 +2,6 @@
 using EcommerceMVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using EcommerceMVC.Helper;
-using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceMVC.Controllers
 {
@@ -36,16 +35,30 @@ namespace EcommerceMVC.Controllers
                     Quantity = quantity,
                     Name = product.TenHh,
                     Image = product.Hinh,
-                    Price = product.DonGia
+                    Price = product.DonGia,
+                    Total = product.DonGia * quantity,
                 };
                 cart.Add(item);
             }
             else
             {
                 item.Quantity += quantity;
+                item.Total = item.Quantity * item.Price;
             }
             HttpContext.Session.Set(CART_SESSION_KEY, cart);
 
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var cart = Cart;
+            var item = cart.SingleOrDefault(x => x.Id == id);
+            if(item is not null)
+            {
+                cart.Remove(item);
+            }
+            HttpContext.Session.Set(CART_SESSION_KEY, cart);
             return RedirectToAction("Index");
         }
     }
