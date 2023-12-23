@@ -1,6 +1,6 @@
 ﻿namespace EcommerceMVC.ViewModels
 {
-    public class CartItem
+    public class CartItemViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;

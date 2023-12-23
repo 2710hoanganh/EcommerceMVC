@@ -1,9 +1,6 @@
 ﻿using EcommerceMVC.Data;
 using EcommerceMVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Linq;
 
 namespace EcommerceMVC.Controllers
 {

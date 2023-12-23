@@ -12,7 +12,7 @@ namespace EcommerceMVC.Controllers
         public CartController(Hshop2023Context context) => _context = context;
 
         const string CART_SESSION_KEY = "SESSION_KEY";
-        public List<CartItem> Cart => HttpContext.Session.Get<List<CartItem>>(CART_SESSION_KEY) ?? new List<CartItem>();
+        public List<CartItemViewModel> Cart => HttpContext.Session.Get<List<CartItemViewModel>>(CART_SESSION_KEY) ?? new List<CartItemViewModel>();
 
         public IActionResult Index()
         {
@@ -29,7 +29,7 @@ namespace EcommerceMVC.Controllers
                 {
                     return Redirect("/404");
                 }
-                item = new CartItem
+                item = new CartItemViewModel
                 {
                     Id = product.MaHh,
                     Quantity = quantity,

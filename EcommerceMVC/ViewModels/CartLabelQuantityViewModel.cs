@@ -1,6 +1,6 @@
 ﻿namespace EcommerceMVC.ViewModels
 {
-    public class CartLabelQuantity
+    public class CartLabelQuantityViewModel
     {
         public int Quantity { get; set; }
     }
